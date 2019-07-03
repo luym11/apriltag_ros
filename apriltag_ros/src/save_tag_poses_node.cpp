@@ -24,7 +24,7 @@ void msg_callback(const apriltag_ros::AprilTagDetectionArray::ConstPtr &msg)
 
 		try
 		{
-			pSaveTagPoses0->listener.lookupTransform("/camera_init", "tag_"+std::to_string(id), ros::Time(0), transform);
+			pSaveTagPoses0->listener.lookupTransform("/camera_odom_frame", "tag_"+std::to_string(id), ros::Time(0), transform);
 		}
 		catch(tf::TransformException ex)
 		{
