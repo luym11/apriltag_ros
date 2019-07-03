@@ -2,7 +2,7 @@
   <arg name="launch_prefix" default="" /> <!-- set to value="gdbserver localhost:10000" for remote debugging -->
   <arg name="node_namespace" default="apriltag_ros_continuous_node" />
   <arg name="camera_name" default="/camera/fisheye1" />
-  <arg name="camera_frame" default="/camera_fishieye1_optical_frame" />
+  <arg name="camera_frame" default="/camera_fisheye1_optical_frame" />
   <arg name="image_topic" default="image_raw" />
   <arg name="camera_info" default="camera_info" />
 
@@ -20,9 +20,9 @@
   </node>
 
  <node pkg="apriltag_ros" type="save_tag_poses_node" name="save_tag_poses_node" output="screen"/>
-
- <node pkg="tf" type="static_transform_publisher" name="realsense_base" args="0 0 0 0 0 0 1 camera_odom_frame $(arg camera_frame) 10" /> 
 <!--
+ <node pkg="tf" type="static_transform_publisher" name="realsense_base" args="0 0 0 0 0 0 1 camera_odom_frame $(arg camera_frame) 10" /> 
+
 <node pkg="tf" type="static_transform_publisher" name="cam_imu0" args="0 0 0 0 0 0 1 cam0 imu 100" /> 
 -->
 
