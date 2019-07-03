@@ -119,6 +119,9 @@ add_executable(${PROJECT_NAME}_single_image_client_node src/${PROJECT_NAME}_sing
 add_dependencies(${PROJECT_NAME}_single_image_client_node ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(${PROJECT_NAME}_single_image_client_node ${PROJECT_NAME}_common ${catkin_LIBRARIES})
 
+add_executable(save_tag_poses_node src/save_tag_poses_node.cpp src/SaveTagPoses.cpp)
+target_link_libraries(save_tag_poses_node ${PROJECT_NAME}_common ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##

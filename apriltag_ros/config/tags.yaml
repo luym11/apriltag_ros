@@ -19,6 +19,28 @@
 #   ]
 standalone_tags:
   [
+          {id: 1, size: 0.23},
+          {id: 10, size: 0.23},
+          {id: 11, size: 0.23},
+{id: 12, size: 0.23},
+{id: 13, size: 0.23},
+{id: 14, size: 0.23},
+{id: 15, size: 0.23},
+{id: 16, size: 0.23},
+{id: 17, size: 0.23},
+{id: 18, size: 0.23},
+{id: 19, size: 0.23},
+{id: 20, size: 0.23},
+{id: 21, size: 0.23},
+{id: 22, size: 0.23},
+{id: 23, size: 0.23},
+{id: 24, size: 0.23},
+{id: 25, size: 0.23},
+{id: 26, size: 0.23},
+{id: 27, size: 0.23},
+{id: 28, size: 0.23},
+{id: 29, size: 0.23},
+{id: 30, size: 0.23}
   ]
 # ## Tag bundle definitions
 # ### Remarks

@@ -1,9 +1,10 @@
 <launch>
   <arg name="launch_prefix" default="" /> <!-- set to value="gdbserver localhost:10000" for remote debugging -->
   <arg name="node_namespace" default="apriltag_ros_continuous_node" />
-  <arg name="camera_name" default="/camera_rect" />
-  <arg name="camera_frame" default="camera" />
-  <arg name="image_topic" default="image_rect" />
+  <arg name="camera_name" default="/realsense/infra1" />
+  <arg name="camera_frame" default="/realsense_infra1_optical_frame" />
+  <arg name="image_topic" default="image_rect_raw" />
+  <arg name="camera_info" default="camera_info" />
 
   <!-- Set parameters -->
   <rosparam command="load" file="$(find apriltag_ros)/config/settings.yaml" ns="$(arg node_namespace)" />
@@ -12,9 +13,17 @@
   <node pkg="apriltag_ros" type="apriltag_ros_continuous_node" name="$(arg node_namespace)" clear_params="true" output="screen" launch-prefix="$(arg launch_prefix)" >
     <!-- Remap topics from those used in code to those on the ROS network -->
     <remap from="image_rect" to="$(arg camera_name)/$(arg image_topic)" />
-    <remap from="camera_info" to="$(arg camera_name)/camera_info" />
+    <remap from="camera_info" to="$(arg camera_name)/$(arg camera_info)" />
 
     <param name="camera_frame" type="str" value="$(arg camera_frame)" />
-    <param name="publish_tag_detections_image" type="bool" value="true" />      <!-- default: false -->
+    <param name="publish_tag_detections_image" type="bool" value="false" />      <!-- default: false -->
   </node>
+
+ <node pkg="apriltag_ros" type="save_tag_poses_node" name="save_tag_poses_node" output="screen"/>
+
+ <node pkg="tf" type="static_transform_publisher" name="realsense_base" args="0 0 0 0 0 0 1 camera $(arg camera_frame) 10" /> 
+<!--
+<node pkg="tf" type="static_transform_publisher" name="cam_imu0" args="0 0 0 0 0 0 1 cam0 imu 100" /> 
+-->
+
 </launch>
